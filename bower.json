@@ -1,0 +1,17 @@
+{
+  "name": "LifeGame",
+  "description": "Life game developed with canvas",
+  "authors": "Victor Busquets Boro",
+  "license": "ISC",
+  "keywords": [
+    "canvas",
+    "life",
+	"game",
+    "javascript"
+  ],
+  "homepage": "",
+  "ignore": [],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}

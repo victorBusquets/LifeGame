@@ -1,0 +1,23 @@
+{
+  "name": "LifeGame",
+  "version": "1.0.0",
+  "description": "Life game developed with canvas",
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/victorBusquets/LifeGame"
+  },
+  "keywords": [
+    "canvas",
+    "game",
+    "javascript",
+    "life"
+  ],
+  "author": "Victor Busquets Boro",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}
