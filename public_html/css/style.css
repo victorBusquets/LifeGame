@@ -9,3 +9,47 @@ body{
 .load-images{
 	display:none;
 }
+
+.config{
+	color:white;
+    width: 200px;
+    text-align: center;
+}
+.config label{
+	display: block;
+	width: 50%;
+    float: left;
+}
+
+#speed input[type='range'] {
+    -webkit-appearance: none !important;
+    background:white;
+    height:20px;
+    border-radius: 100px;
+}
+#speed input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    content:"121";
+    color:white;
+    background:#353535;
+    height:20px;
+    width:20px;
+    border-radius: 100px;
+}
+
+#speed input[type=range]:focus {
+  outline: none; 
+}
+
+#speed .show{
+	width: 30%;
+    float: left;
+    text-align: center;
+    background: none;
+    border: none;
+    color: white;
+}
+
+#speed .launcher{
+	width: 100%;
+}

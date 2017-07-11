@@ -1,11 +1,10 @@
 function Game ( gameSize, speed ){
 	var idName = "game",
 		canvas 	= Canvas( idName, gameSize, false ),
-		speed 	= speed || 500,
+		stateMachine = StateMachine( speed ),
 		life	= Life( gameSize );
 		
 	function init(){		
-		console.log( "Init the GAME" );
 		addEventListener();
 		render();
 		loop();
@@ -15,7 +14,7 @@ function Game ( gameSize, speed ){
 		setTimeout(function(){ 
 			loopTime();
 			loop();
-		}, speed);
+		}, stateMachine.getSpeed() );
 	};
 
 	function update(){
@@ -31,7 +30,6 @@ function Game ( gameSize, speed ){
 
 
 	function render(){
-		console.log( "Render LIFE" );
 		life.render( canvas );
 	};
 
@@ -40,8 +38,15 @@ function Game ( gameSize, speed ){
 		loopTime();
 	};*/
 
+
+	function speedChangeEvent(){
+		var value = parseInt( this.value);
+		stateMachine.setSpeed( value ) ;
+	};
+
 	function addEventListener(){
-		//$( "#" + idName ).click( clickEvent );
+		//$( "#" + idName ).click( clickEvent );Ç
+		$("#speed .launcher").change( speedChangeEvent );
 	};
 	
 	init();
