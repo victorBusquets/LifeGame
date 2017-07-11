@@ -30,10 +30,11 @@ function Canvas( domId, gameSize ){
 	};
 	
 	function setFullSize(){
-		const MARGIN = 20;
+		const MARGIN_TOP = 30,
+			  MARGIN_BOTTOM = 10;
 		
-		var width = $(window).width() - MARGIN,
-			height = $(window).height() - MARGIN,
+		var width = $(window).width(),
+			height = $(window).height() - MARGIN_TOP -MARGIN_BOTTOM,
 			cellSize = height / gameSize.y,
 			finalWidth = cellSize * gameSize.x,
 			finalHeight = cellSize * gameSize.y;
@@ -41,7 +42,7 @@ function Canvas( domId, gameSize ){
 		setCellSize( cellSize );
 		setWidth( finalWidth );
 		setHeight( finalHeight );
-		centerCanvas( width - finalWidth +MARGIN, height - finalHeight+MARGIN);
+		centerCanvas( width - finalWidth, height - finalHeight+MARGIN_TOP*2);
 	};
 	
 	function centerCanvas(widthDiff, heightDiff){

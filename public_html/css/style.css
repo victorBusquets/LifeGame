@@ -4,16 +4,57 @@ body{
 }
 #game{
     background: white;
+    z-index: 10;
 }
 
-.load-images{
-	display:none;
+body{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
+.controls{
+    transition: all 2s;
+    position: relative;
+    height: 200%;
+    width: 100%;
+    bottom: 100%;
+}
+
+.controls.open{
+    transform: rotate(180deg);
+    z-index: 15;
+}
+.controls .region{
+    position: absolute;
+    height: 50%;
+    width: 100%;
+}
+.controls .region.open{
+    background: red;
+}
+.controls .region.close{
+    top: 50%;
+    z-index: 5;
+}
+
+.controls .button-toggle{
+    width: 10%;
+    height: 25px;
+    left: 45%;
+    position: absolute;
+    background: gray;
+}
+.controls .open .button-toggle{
+    bottom: 0;
+}
+/*
 .config{
 	color:white;
     width: 200px;
     text-align: center;
+    margin:30px 20px;
 }
 .config label{
 	display: block;
@@ -53,3 +94,13 @@ body{
 #speed .launcher{
 	width: 100%;
 }
+
+#randomColor input{
+    margin-top: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.config > div{
+    margin-bottom: 15px;
+}*/

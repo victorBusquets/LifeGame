@@ -1,7 +1,7 @@
 function Game ( gameSize, speed ){
 	var idName = "game",
 		canvas 	= Canvas( idName, gameSize, false ),
-		stateMachine = StateMachine( speed ),
+		controls = Controls( speed ),
 		life	= Life( gameSize );
 		
 	function init(){		
@@ -14,7 +14,7 @@ function Game ( gameSize, speed ){
 		setTimeout(function(){ 
 			loopTime();
 			loop();
-		}, stateMachine.getSpeed() );
+		}, controls.getSpeed() );
 	};
 
 	function update(){
@@ -30,7 +30,7 @@ function Game ( gameSize, speed ){
 
 
 	function render(){
-		life.render( canvas );
+		life.render( canvas, false );
 	};
 
 	/*function clickEvent(){
@@ -41,7 +41,8 @@ function Game ( gameSize, speed ){
 
 	function speedChangeEvent(){
 		var value = parseInt( this.value);
-		stateMachine.setSpeed( value ) ;
+		
+		controls.setSpeed( value ) ;
 	};
 
 	function addEventListener(){

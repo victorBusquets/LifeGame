@@ -48,13 +48,29 @@ function Life( gameSize ){
 		cells = CELLS_MAP;
 	};
 
-	function render( canvas ){
+	function generateInteger(min, max){
+		return Math.floor(Math.random() * (max - min) + min);
+	};
+
+	function generateRandomColor(){
+		var	values = "0123456789ABCDEF"; 
+			color = "#"; 
+
+		for ( var i=0;i<6;i++ ){ 
+			color += values[ generateInteger( 0, values.length ) ] 
+		} 
+
+		return color;
+	};
+
+	function render( canvas, randomColor ){
 		var rows = cells.match( new RegExp(".{1,"+gameSize.x+"}", "g") );
 
 		rows.map(function( row, y ){
 			row.split("").map(function( cell, x ) {
 				if(cell==="1"){
-					canvas.fillCell( x, y, "red" );
+					color = randomColor ? generateRandomColor(): "gray";
+					canvas.fillCell( x, y, color );
 				}
 			});
 		});
