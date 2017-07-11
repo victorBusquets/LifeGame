@@ -1,16 +1,20 @@
 function Game ( gameSize, speed ){
-	var canvas 	= Canvas( "game", gameSize, false ),
-		speed 	= speed || 150,
+	var idName = "game",
+		canvas 	= Canvas( idName, gameSize, false ),
+		speed 	= speed || 500,
 		life	= Life( gameSize );
 		
 	function init(){		
-		console.log("Init the GAME");
+		console.log( "Init the GAME" );
+		addEventListener();
 		render();
+		loop();
 	};
 	
 	function loop(){
 		setTimeout(function(){ 
 			loopTime();
+			loop();
 		}, speed);
 	};
 
@@ -20,13 +24,24 @@ function Game ( gameSize, speed ){
 	};
 
 	function loopTime(){
+		canvas.clearCanvas();
 		update();
 		render();
 	}
 
 
 	function render(){
+		console.log( "Render LIFE" );
 		life.render( canvas );
+	};
+
+	/*function clickEvent(){
+		console.log( "ClickEvent" );
+		loopTime();
+	};*/
+
+	function addEventListener(){
+		//$( "#" + idName ).click( clickEvent );
 	};
 	
 	init();
