@@ -1,5 +1,7 @@
 function Life( gameSize ){
-	var cells = "";		
+	var cells = "",
+		cellsRenderValues = "";
+
 
 	function inColumnLimits( columnIndex, value ){
 		var columnsLimit = getColumnLimits( columnIndex );
@@ -46,6 +48,7 @@ function Life( gameSize ){
 
 	function createInitialCells(){
 		cells = CELLS_MAP;
+		cellsRenderValues = CELLS_MAP;
 	};
 
 	function generateInteger(min, max){
@@ -53,7 +56,7 @@ function Life( gameSize ){
 	};
 
 	function generateRandomColor(){
-		var	values = "0123456789ABCDEF"; 
+		var	values = "0123456789ABCDE"; 
 			color = "#"; 
 
 		for ( var i=0;i<6;i++ ){ 
@@ -64,13 +67,15 @@ function Life( gameSize ){
 	};
 
 	function render( canvas, randomColor ){
-		var rows = cells.match( new RegExp(".{1,"+gameSize.x+"}", "g") );
+		var rows = cellsRenderValues.match( new RegExp(".{1,"+gameSize.x+"}", "g") );
 
 		rows.map(function( row, y ){
 			row.split("").map(function( cell, x ) {
 				if(cell==="1"){
 					color = randomColor ? generateRandomColor(): "gray";
 					canvas.fillCell( x, y, color );
+				}else if(cell==="0"){
+					canvas.clearCell( x, y );
 				}
 			});
 		});
@@ -84,12 +89,26 @@ function Life( gameSize ){
 		return count ===3  ? 1 : 0;
 	};
 
+	function getDiffBetweenRounds( currentCellValue, nextCellValue ){
+		// 0 -> Should kill (clear) cell on render
+		// 1 -> Should live (paint) cell on render
+		// x -> Nothing happens on render
+
+		return currentCellValue == nextCellValue ? "X" : nextCellValue;
+	};
+
 	function update(){
 		var nextRoundCells = "";
 
+		cellsRenderValues = "";
+
 		for( var i=0; i<cells.length; i++ ){
-			var lifeArround = countLifesArround( i );
-			nextRoundCells += cells[ i ] === "1" ? cellShouldDie( lifeArround ) : cellShouldLive( lifeArround );
+			var lifeArround = countLifesArround( i ),
+				currentCellValue = cells[ i ],
+				nextCellValue = currentCellValue === "1" ? cellShouldDie( lifeArround ) : cellShouldLive( lifeArround );
+
+			cellsRenderValues += getDiffBetweenRounds( currentCellValue, nextCellValue );
+			nextRoundCells += nextCellValue;
 		}
 
 		cells = nextRoundCells;

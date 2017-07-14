@@ -1,8 +1,8 @@
 function Game ( gameSize, speed ){
-	var idName = "game",
-		canvas 	= Canvas( idName, gameSize, false ),
+	var idName   = "game",
+		canvas 	 = Canvas( idName, gameSize, false ),
 		controls = Controls( speed ),
-		life	= Life( gameSize );
+		life	 = Life( gameSize );
 		
 	function init(){		
 		addEventListener();
@@ -23,21 +23,14 @@ function Game ( gameSize, speed ){
 	};
 
 	function loopTime(){
-		canvas.clearCanvas();
 		update();
 		render();
 	}
 
 
 	function render(){
-		life.render( canvas, false );
+		life.render( canvas, true );
 	};
-
-	/*function clickEvent(){
-		console.log( "ClickEvent" );
-		loopTime();
-	};*/
-
 
 	function speedChangeEvent(){
 		var value = parseInt( this.value);
@@ -46,8 +39,7 @@ function Game ( gameSize, speed ){
 	};
 
 	function addEventListener(){
-		//$( "#" + idName ).click( clickEvent );Ç
-		$("#speed .launcher").change( speedChangeEvent );
+		//$("#speed .launcher").change( speedChangeEvent );
 	};
 	
 	init();

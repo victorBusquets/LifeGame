@@ -1,6 +1,6 @@
 body{
 	margin:0;
-	background:black;
+	background:rgba(110, 235, 227, 1);
 }
 #game{
     background: white;
@@ -15,7 +15,7 @@ body{
 }
 
 .controls{
-    transition: all 2s;
+    transition: all .5s;
     position: relative;
     height: 200%;
     width: 100%;
@@ -24,16 +24,15 @@ body{
 
 .controls.open{
     transform: rotate(180deg);
-    z-index: 15;
+    transition: all 1.5s;
+	z-index: 15;
 }
 .controls .region{
     position: absolute;
     height: 50%;
     width: 100%;
 }
-.controls .region.open{
-    background: red;
-}
+
 .controls .region.close{
     top: 50%;
     z-index: 5;
@@ -48,6 +47,11 @@ body{
 }
 .controls .open .button-toggle{
     bottom: 0;
+}
+
+.controls .menu{
+	position: absolute;
+	background: rgba(5, 5, 5, 0.5);
 }
 /*
 .config{

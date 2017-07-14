@@ -10,7 +10,7 @@ function Canvas( domId, gameSize ){
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	};
 	function clearCell( startX, startY ){
-		context.clearRect( getProportionalSize(startX), getProportionalSize(startY), cellSize, cellSize );
+		context.clearRect( getProportionalSize(startX)-0.5, getProportionalSize(startY)-0.5, cellSize+1, cellSize+1 );
 	};
 	function fillCell( startX, startY, color ){
 		if(color) setColor(color);
